@@ -2,10 +2,18 @@ package Domino.SecondWindow;
 
 import Domino.Pair;
 
+import java.awt.*;
+
 public class Knuckle {
     private static Pair size;
     private static Pair[][] allCoords;
-    private static Boolean[][] flag = new Boolean[4][7];
+    private static Boolean[][] flag ;
+
+    public Knuckle (){  //Boolean[][] data
+        flag = new Boolean[4][7];
+
+    }
+
 
 
     public static Pair[][] kn() {
@@ -25,16 +33,21 @@ public class Knuckle {
         return allCoords;
     }
 
-    public void changeFlag(int x, int y){
+    public static Boolean changeFlag(int x, int y){
         boolean n = flag[y][x];
-        if (n) flag[y][x] = false;
-        else flag[y][x] = true;
+        if (!n) flag[y][x] = true;
+        return flag[y][x];
+    }
+
+    public static String changeName(int x, int y){
+        if(flag[y][x]) return "kr";
+        else  return "";
     }
 
 
-    public void pressRightButton(Pair coord) {
-        changeFlag(coord.left, coord.right);
-    }
+//  public Image getBox (Pair coord){
+//
+//  }
 }
 
 

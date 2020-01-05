@@ -11,17 +11,19 @@ public class Window extends JFrame
 {
     private JPanel panel;
     private JMenu menu;
+    JFrame myWindow = new SecondWindow();
 
     public static void main(String[] args)
     {
         new Window();
     }
 
-    private Window()
+    public Window()
     {
         initPanel();
         initMenu();
         initFrame();
+
 
     }
 
@@ -36,14 +38,19 @@ public class Window extends JFrame
     {
         JMenuBar menuBar = new JMenuBar();
         menu = new JMenu("Меню");
+        Font BigFontTR = new Font("TimesRoman", Font.BOLD, 24);
+       menu.setFont(BigFontTR);
 
         JMenuItem choose = new JMenuItem("Выбрать Костяшки");
+        choose.setFont(BigFontTR);
     choose.addActionListener(new ActionListener() {
 
+
+
         public void actionPerformed(ActionEvent event) {
-            JFrame myWindow = new SecondWindow();
+
             myWindow.setVisible(true);
-            setVisible(false);
+            //setVisible(false);
         }});
 
         menu.add(choose);
@@ -60,7 +67,19 @@ public class Window extends JFrame
 
         setLocationRelativeTo(null);
         //setResizable(false);// размер окна
+        myWindow.setVisible(false);
         setVisible(true);
+        setIconImage(getImage("k66"));
+
+
     }
+
+    private Image getImage(String name) {
+        String filename = "im/" + name.toLowerCase() + ".png";
+        ImageIcon icon = new ImageIcon("src/main/resources/" + filename);
+        return icon.getImage();
+    }
+
+
 
 }

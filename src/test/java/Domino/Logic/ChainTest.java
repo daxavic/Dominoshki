@@ -38,6 +38,29 @@ public class ChainTest {
                 new ArrayList<Pair>(Arrays.asList(new Pair(0,0), new Pair(1,1),
                         new Pair(2,2), new Pair(3,3),new Pair(4,4),
                         new Pair(5,5), new Pair(6,6))));
+
+        resultTest(new ArrayList<String>(Arrays.asList("00","03", "33", "34", "41", "16", "66")),
+                new ArrayList<Pair>(Arrays.asList(new Pair(0,0), new Pair(0,3),
+                        new Pair(1,4), new Pair(2,3),new Pair(2,5),
+                        new Pair(3,3), new Pair(4,3), new Pair(6,1),
+                        new Pair(6,6))));
+
+        resultTest(new ArrayList<String>(Arrays.asList("00","01", "11", "12", "22", "20", "03","33",
+                "31", "14", "44", "40","05", "55", "51", "16", "66", "62", "23", "34", "42", "25", "53",
+                "36", "64", "45", "56", "60")),
+                new ArrayList<Pair>(Arrays.asList(new Pair(0,0), new Pair(0,1),
+                        new Pair(0,2), new Pair(0,3), new Pair(0,4),
+                        new Pair(0,5), new Pair(0,6), new Pair(1,1),
+                        new Pair(1,2), new Pair(1,3), new Pair(1,4),
+                        new Pair(1,5), new Pair(1,6), new Pair(2,2),
+                        new Pair(2,3), new Pair(2,4), new Pair(2,5),
+                        new Pair(2,6), new Pair(3,3), new Pair(3,4),
+                        new Pair(3,5), new Pair(3,6), new Pair(4,4),
+                        new Pair(4,5),  new Pair(4,6),  new Pair(5,5),
+                        new Pair(5,6), new Pair(6,6))));
+
+
+
     }
 
 
