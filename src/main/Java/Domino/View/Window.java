@@ -1,6 +1,4 @@
-package Domino;
-
-import Domino.SecondWindow.SecondWindow;
+package Domino.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +9,7 @@ public class Window extends JFrame
 {
     private JPanel panel;
     private JMenu menu;
-    JFrame myWindow = new SecondWindow();
+    JFrame secondWindow = new SecondWindow();
 
     public static void main(String[] args)
     {
@@ -29,7 +27,34 @@ public class Window extends JFrame
 
     private void initPanel()
     {
-        panel = new JPanel();
+      //  panel = new JPanel();
+        panel = new JPanel(){
+            @Override
+            protected void paintComponent(Graphics g) { //функция, что рисовать
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+//                AffineTransform tx = new AffineTransform();
+//                tx.rotate(0.5, bufferedImage.getWidth() / 2, bufferedImage.getHeight() / 2);
+//
+//                AffineTransformOp op = new AffineTransformOp(tx,
+//                        AffineTransformOp.TYPE_BILINEAR);
+//                bufferedImage = op.filter(bufferedImage, null);
+
+
+                //Image icon = getImage("k00kr");
+
+
+                //g2.rotate(Math.toRadians(90),70,71);
+
+
+//               Domino.Pair[][] massiv;
+//               massiv = knuckles.MATRIX;
+
+
+
+
+            }
+        };
         panel.setPreferredSize(new Dimension(1000, 900));
         add(panel);
     }
@@ -49,7 +74,11 @@ public class Window extends JFrame
 
         public void actionPerformed(ActionEvent event) {
 
-            myWindow.setVisible(true);
+            secondWindow.setVisible(true);
+        //    System.out.println(secondWindow.r);
+            //System.out.println(secondWindow.result);
+
+           // System.out.println(knuckles);
             //setVisible(false);
         }});
 
@@ -67,8 +96,9 @@ public class Window extends JFrame
 
         setLocationRelativeTo(null);
         //setResizable(false);// размер окна
-        myWindow.setVisible(false);
+
         setVisible(true);
+       // myWindow.setVisible(false);
         setIconImage(getImage("k66"));
 
 
@@ -79,6 +109,8 @@ public class Window extends JFrame
         ImageIcon icon = new ImageIcon("src/main/resources/" + filename);
         return icon.getImage();
     }
+
+
 
 
 

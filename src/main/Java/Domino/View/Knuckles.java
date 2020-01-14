@@ -1,13 +1,15 @@
-package Domino.SecondWindow;
+package Domino.View;
 
+import Domino.Logic.Chain;
 import Domino.Pair;
+
+import java.util.ArrayList;
 
 public class Knuckles {
 
-
-
-
-    static Boolean[][] bool;// = new Boolean[4][7] ;
+    static Boolean[][] bool; // = new Boolean[4][7] ;
+    //final static  int COLUMN = 4; //количество столбцов в таблице
+   // final static int ROW = 7;    // количество строк в матрице
 
     public Knuckles(){
         //Boolean[][] data
@@ -51,6 +53,21 @@ public class Knuckles {
     public Boolean getKn (int x, int y) {
         boolean n = bool[y][x];
         return n;
+    }
+
+    public static Chain toChain(){
+        ArrayList<Pair> n = new ArrayList<>();
+        for (int y = 0; y < 4; y++){
+            for (int x = 0; x < 7; x++){
+                if (bool[y][x]) n.add(new Pair(y,x));
+
+            }
+
+        }
+        System.out.print(n.toString());
+        System.out.println();
+        return new Chain(n);
+
     }
 
 }

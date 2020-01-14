@@ -1,4 +1,4 @@
-package Domino;
+package Domino.View;
 
 public enum Box {
     k00,
