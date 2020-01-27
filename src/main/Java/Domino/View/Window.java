@@ -20,7 +20,7 @@ public class Window extends JFrame {
     private JMenu menu;
     private final int IMAGE_WIDTH = 71;    //ширина одной картинки
     private final int IMAGE_HEIGHT = 142; //высота одной картинки
-    private final int INDENT = 30;
+    private final int INDENT = 30;        //отступ
     //Knuckles knuckles = new Knuckles();
 
 
@@ -34,8 +34,6 @@ public class Window extends JFrame {
     private void initPanel(Chain pop) {
         panel = new JPanel();
         draw(pop);
-        JButton start = start(new JButton(), pop);
-        //panel.add(start);
         panel.add(label(pop));
 
         panel.setPreferredSize(new Dimension(1300, 900));
@@ -49,11 +47,12 @@ public class Window extends JFrame {
             ArrayList<String> str = pop.toStr();
             for (int i = 0; i < str.size(); i++) {
                 res = res + " (" + str.get(i) + ")";
+                if (i == 17) res = res + "<br>";
             }
         } else res = "не выбраны";
 
         JLabel label = new JLabel();
-        label.setText("Костяшки: " + res);
+        label.setText("<html>Костяшки: " + res + "<html>");
         Font font = new Font("BOLD", Font.BOLD, 24);
         label.setPreferredSize(new Dimension(1250, 870));
         label.setFont(font);
@@ -99,25 +98,25 @@ public class Window extends JFrame {
         setIconImage(getImage("66"));
     }
 
-    private JButton start(JButton start, Chain pop) {
-        start.setPreferredSize(new Dimension(100, 50));
-        //start.setVerticalAlignment(JLabel.CENTER);
-        //start.setHorizontalAlignment(JLabel.RIGHT);
-        start.setText("начать");
-        start.setBackground(Color.WHITE);
-        Font BigFontTR = new Font("TimesRoman", Font.BOLD, 18);
-        start.setFont(BigFontTR);
-        start.setBounds(1110, 670, 150, 50);
-        start.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent event) {
-                draw(pop);
-                repaint();
-
-            }
-        });
-        return start;
-    }
+//    private JButton start(JButton start, Chain pop) {
+//        start.setPreferredSize(new Dimension(100, 50));
+//        //start.setVerticalAlignment(JLabel.CENTER);
+//        //start.setHorizontalAlignment(JLabel.RIGHT);
+//        start.setText("начать");
+//        start.setBackground(Color.WHITE);
+//        Font BigFontTR = new Font("TimesRoman", Font.BOLD, 18);
+//        start.setFont(BigFontTR);
+//        start.setBounds(1110, 670, 150, 50);
+//        start.addActionListener(new ActionListener() {
+//
+//            public void actionPerformed(ActionEvent event) {
+//                draw(pop);
+//                repaint();
+//
+//            }
+//        });
+//        return start;
+//    }
 
     //  данный метод находит путь к картинке
     private BufferedImage getImage(String name) throws IOException {

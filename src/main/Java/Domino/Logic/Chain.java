@@ -10,13 +10,13 @@ public class Chain {
     private ArrayList<Integer> best;                // самая длинная цепочка, найденная на данный момент
     private ArrayList<Integer> ch;                  // цепочка, которая состовляется в данный момент
     boolean flag;                                    // показыват, найдена ли цепочка, равная SIZE
-    ArrayList<Pair> before;
+    ArrayList<Pair> before;                          // начальный данные
 
     //создаем конструктор
     public Chain(ArrayList<Pair> data) {
          before = data;
         size = data.size();
-        if (size > MAX && size < 0) throw new IllegalArgumentException("Неверное количество элементов");
+        if (size > MAX && size <= 0) throw new IllegalArgumentException("Неверное количество элементов");
         for (Pair el : data) {
             int left = el.left;
             int right = el.right;
@@ -66,7 +66,7 @@ public class Chain {
             this.matrix[kn][kn] = true;               //возвращаем костяшку
             return;
         }
-        for (int i = 0; i <= 6; i++) {                 //ищем цепочку, когда нет дубля
+        for (int i = 0; i < 7; i++) {                 //ищем цепочку, когда нет дубля
             if (matrix[kn][i]) {
                 this.matrix[i][kn] = false;
                 this.matrix[kn][i] = false;            //убираем костяшку
