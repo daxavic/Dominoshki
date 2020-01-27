@@ -1,6 +1,5 @@
 package Domino.Logic;
 
-import Domino.Pair;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;

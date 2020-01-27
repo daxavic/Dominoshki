@@ -1,7 +1,8 @@
 package Domino.View;
 
 
-import Domino.Pair;
+import Domino.Controller.Knuckles;
+import Domino.Logic.Pair;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -21,10 +22,6 @@ public class SecondWindow  extends JFrame {
 
     Knuckles knuckles = new Knuckles();
     final Pair[][] MATRIX = knuckles.MATRIX;
-
-    public static void main(String[] args) throws IOException {
-        new SecondWindow();
-    }
 
     public SecondWindow() throws IOException {
         initPanel();
@@ -47,7 +44,7 @@ public class SecondWindow  extends JFrame {
        JButton close = close(new JButton());
        JButton clear = clear(new JButton());
 
-        // меняет флаг костяшки
+// меняет флаг костяшки
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -89,18 +86,31 @@ public class SecondWindow  extends JFrame {
         close.setBackground(Color.WHITE);
         close.setFont(BigFontTR);
         close.setBounds(370, 618, 150, 50);
+
+//        if (!knuckles.color()) {
+//            JOptionPane.showMessageDialog(
+//                    null, "Ошибка","Error",JOptionPane.ERROR_MESSAGE
+//                    );
+//        } else
         close.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                try {
+                try {if (knuckles.color()){
                     JFrame myWindow = new Window(knuckles.toChain());
                     myWindow.setVisible(true);
+                    dispose();}
+                    else JOptionPane.showMessageDialog(
+                            null, "Вы не выбрали костяшки!",
+                            "выберете костяшки",JOptionPane.ERROR_MESSAGE
+                    );
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                dispose();
+
             }});
         return close;
     }
+
 
     // данная кнока очищает поле
     private JButton clear (JButton clear){

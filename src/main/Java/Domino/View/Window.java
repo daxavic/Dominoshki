@@ -1,7 +1,7 @@
 package Domino.View;
 
 import Domino.Logic.Chain;
-import Domino.Pair;
+import Domino.Logic.Pair;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +13,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Window extends JFrame {
@@ -22,12 +21,8 @@ public class Window extends JFrame {
     private final int IMAGE_WIDTH = 71;    //ширина одной картинки
     private final int IMAGE_HEIGHT = 142; //высота одной картинки
     private final int INDENT = 30;
-    Knuckles knuckles = new Knuckles();
+    //Knuckles knuckles = new Knuckles();
 
-
-    public static void main(String[] args) throws IOException {
-        new Window(null);
-    }
 
     public Window(Chain pop) throws IOException {
         initPanel(pop);
@@ -55,7 +50,7 @@ public class Window extends JFrame {
             for (int i = 0; i < str.size(); i++) {
                 res = res + " (" + str.get(i) + ")";
             }
-        }
+        } else res = "не выбраны";
 
         JLabel label = new JLabel();
         label.setText("Костяшки: " + res);
@@ -89,13 +84,13 @@ public class Window extends JFrame {
                 dispose();
             }
         });
-
         menu.add(choose);
         menuBar.add(menu);
         setJMenuBar(menuBar);
     }
 
     private void initFrame() throws IOException {
+        setBackground(new Color(142, 204, 197));
         pack();  //размер
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Domino");
@@ -104,7 +99,7 @@ public class Window extends JFrame {
         setIconImage(getImage("66"));
     }
 
-    private JButton start (JButton start, Chain pop){
+    private JButton start(JButton start, Chain pop) {
         start.setPreferredSize(new Dimension(100, 50));
         //start.setVerticalAlignment(JLabel.CENTER);
         //start.setHorizontalAlignment(JLabel.RIGHT);
@@ -119,7 +114,8 @@ public class Window extends JFrame {
                 draw(pop);
                 repaint();
 
-            }});
+            }
+        });
         return start;
     }
 
@@ -131,14 +127,10 @@ public class Window extends JFrame {
         return icon;
     }
 
-
-
     //данный метод поварачивает картинку на оределенное количество градусов
     public BufferedImage rotate(BufferedImage image, Double degrees) {
         int width = image.getWidth();
         int height = image.getHeight();
-        System.out.println(width);
-        System.out.println(height);
 
         // рассчитаем новый размер изображения на основе угла поворота
         double radians = Math.toRadians(degrees);
@@ -229,7 +221,8 @@ public class Window extends JFrame {
                                             m * IMAGE_HEIGHT + INDENT, coorY, this);
                                     m--;
                                     if (m == -1) {
-                                        m++; n++;
+                                        m++;
+                                        n++;
                                         coorY = coorY + IMAGE_WIDTH;
                                     }
                                 }
@@ -238,7 +231,7 @@ public class Window extends JFrame {
                                     if (bool)
                                         rotated = rotate(original, 180.0d);
                                     g.drawImage(original,
-                                            INDENT,coorY, this);
+                                            INDENT, coorY, this);
                                     coorY = coorY + IMAGE_HEIGHT;
                                     n = 0;
                                 }

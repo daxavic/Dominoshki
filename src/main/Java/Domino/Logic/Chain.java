@@ -1,7 +1,5 @@
 package Domino.Logic;
 
-import Domino.Pair;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -95,7 +93,6 @@ public class Chain {
     public ArrayList<Pair> result() {
         for (int k = 0; k <= 6; k++) {
             doChain(k);
-            System.out.println(best);
         }
         return getPairs();
     }
@@ -106,12 +103,8 @@ public class Chain {
 
         for (int i = 1; i < best.size(); i = i + 2) {
             res.add(new Pair(best.get(i - 1), best.get(i)));
-            System.out.print(new Pair(best.get(i - 1), best.get(i)).toString());
         }
         if (res.size() > size) throw new IllegalArgumentException("Количество элементов больше возможного");
-        System.out.print("res = ");
-        System.out.print(res);
-
         return res;
     }
 
@@ -123,8 +116,6 @@ public class Chain {
         for (int i = 0; i < before.size(); i++) {
             res.add(before.get(i).toString());
         }
-        System.out.print("ОТВЕТ:  ");
-        System.out.println(res);
         return res;
     }
 
