@@ -7,9 +7,7 @@ import java.util.ArrayList;
 
 public class Knuckles {
 
-    static Boolean[][] bool; // = new Boolean[4][7] ;
-    //final static  int COLUMN = 4; //количество столбцов в таблице
-   // final static int ROW = 7;    // количество строк в матрице
+    static Boolean[][] bool; //показывает, выбрана ли костяшка
 
     public Knuckles(){
         //Boolean[][] data
@@ -42,8 +40,7 @@ public class Knuckles {
         return allCoords;
     }
 
-
-
+    //данный метод меняет флаг: если костяшка не была выбрана, выбиает, и наборот
     public void changeFlag(int x, int y){
         boolean n = bool[y][x];
         if (!n) bool[y][x] = true;
@@ -55,7 +52,8 @@ public class Knuckles {
         return n;
     }
 
-    public static Chain toChain(){
+    // данный метод делает из выбранных костяшек цепочку
+    public Chain toChain(){
         ArrayList<Pair> n = new ArrayList<>();
         for (int y = 0; y < 4; y++){
             for (int x = 0; x < 7; x++){
@@ -64,9 +62,11 @@ public class Knuckles {
             }
 
         }
+        System.out.print("oxoxoxox:   ");
         System.out.print(n.toString());
         System.out.println();
-        return new Chain(n);
+        Chain ch = new Chain(n);
+        return ch;
 
     }
 

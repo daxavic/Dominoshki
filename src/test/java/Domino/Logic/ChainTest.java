@@ -2,17 +2,11 @@ package Domino.Logic;
 
 import Domino.Pair;
 import org.junit.Test;
-import sun.plugin.javascript.navig.Array;
-import sun.plugin.javascript.navig.Link;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-
 import static org.junit.Assert.*;
 
 public class ChainTest {
-
 
     static void resultTest(ArrayList<String> expected, ArrayList<Pair> data){
         Chain m = new Chain(data);
@@ -58,11 +52,7 @@ public class ChainTest {
                         new Pair(3,5), new Pair(3,6), new Pair(4,4),
                         new Pair(4,5),  new Pair(4,6),  new Pair(5,5),
                         new Pair(5,6), new Pair(6,6))));
-
-
-
     }
-
 
     static void foundPublicTest(boolean expected, ArrayList<Pair> data, int k){
         Chain m = new Chain(data);
@@ -78,7 +68,6 @@ public class ChainTest {
         foundPublicTest(false, new ArrayList<Pair>(Arrays.asList(new Pair(5,6),
                 new Pair(6,2))), 4);
     }
-
 
 
     static void doChainPublicTest (ArrayList<Integer> expected, ArrayList<Pair> data, int kn){
